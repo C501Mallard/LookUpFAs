@@ -11,4 +11,18 @@ public partial class _Default : System.Web.UI.Page
     {
 
     }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        //SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["WY-FADBConnectionString"].ConnectionString);
+        //SqlDataAdapter objda = new SqlDataAdapter("select * from users where uid='" + TextBox1.Text + "'", conn);
+        //SqlDataSource2.ConnectionString = "Data Source=williamsphere-z;Initial Catalog=FADB;Integrated Security=True";
+        //SqlDataSource2.SelectCommand = "select * from users where uid='" + TextBox1.Text + "'";
+        //DetailsView1.DataSourceID = "SqlDataSource12";
+
+        //DetailsView1.DataBind();
+        sdsHeatmap.DataBind();
+        gvHeatmap.DataBind();
+
+    }
 }
