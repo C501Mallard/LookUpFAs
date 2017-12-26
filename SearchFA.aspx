@@ -187,8 +187,12 @@
         </div>
         <%-- </form>--%>
     </div>
+
     <script>
-     
+        //調整標題列 HighLight (Active) 的項目
+        $(function () {
+            $("#LookUpFAs").addClass("active");
+        });
     </script>
 </asp:Content>
 

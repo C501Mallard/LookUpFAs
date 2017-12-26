@@ -17,7 +17,7 @@
         <br />
 
         <div class="input-group">
-            <asp:Label ID="Label1" runat="server" Text="關鍵字查詢:" CssClass="MSZH input-group-addon"></asp:Label>
+            <asp:Label ID="Label1" runat="server" Text="關鍵字查詢(中文品名):" CssClass="MSZH input-group-addon"></asp:Label>
             <asp:TextBox ID="TextBox1" runat="server" CssClass="MSZH form-control"></asp:TextBox>
             <asp:Button ID="Button1" runat="server" Text="送出" CssClass="btn btn-primary btn-sm MSZH" />
         </div>

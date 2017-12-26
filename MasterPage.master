@@ -50,12 +50,12 @@
                             </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="LookUpFAsnavDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">A.查詢添加物
+                            <a class="nav-link dropdown-toggle MSZH" href="#" id="LookUpFAsnavDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">A.查詢添加物
                             </a>
                             <div class="dropdown-menu" aria-labelledby="LookUpFAsnavDropdownMenuLink">
-                                <a class="dropdown-item" href="A_LookUpFAs.aspx">1.關鍵字查詢</a>
-                                <a class="dropdown-item" href="SearchFA.aspx">2.類別查詢</a>
-                                <a class="dropdown-item" href="SearchEn.aspx">3.英文標頭查詢</a>
+                                <a class="dropdown-item MSZH" href="A_LookUpFAs.aspx">1.關鍵字查詢</a>
+                                <a class="dropdown-item MSZH" href="SearchFA.aspx">2.類別查詢</a>
+                                <a class="dropdown-item MSZH" href="SearchEn.aspx">3.英文標頭查詢</a>
                             </div>
                         </li>
                         <%--<li class="nav-item">
