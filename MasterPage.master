@@ -1,0 +1,171 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="來查添加物">
+    <meta name="author" content="C501 Team Mallard">
+
+    <title>來查添加物 用戶端</title>
+
+    <link rel="icon" type="image/png" href="img/FA_Icon.ico" />
+
+    <!-- Bootstrap core CSS -->
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="Content/3-col-portfolio.css" rel="stylesheet" />
+
+    <style>
+        .MSZH {
+            font-family: "Microsoft JhengHei";
+        }
+
+        .img-circle {
+            border-radius: 50%;
+        }
+    </style>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand MSZH" href="#">來查添加物 (Look up FAs)</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item" id="MainPage">
+                            <a class="nav-link MSZH" href="MainPage.aspx">首頁              
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="LookUpFAsnavDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">A.查詢添加物
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="LookUpFAsnavDropdownMenuLink">
+                                <a class="dropdown-item" href="A_LookUpFAs.aspx">1.關鍵字查詢</a>
+                                <a class="dropdown-item" href="SearchFA.aspx">2.類別查詢</a>
+                                <a class="dropdown-item" href="SearchEn.aspx">3.英文標頭查詢</a>
+                            </div>
+                        </li>
+                        <%--<li class="nav-item">
+                            <a class="nav-link MSZH" href="A_LookUpFAs.aspx" id="LookUpFAs">A.查詢添加物</a>
+                        </li>--%>
+
+                        <li class="nav-item">
+                            <a class="nav-link  MSZH" href="B_FunGame.aspx" id="FunGame">B.好玩小遊戲</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link  MSZH" href="C_MyFaviFA.aspx" id="MyFaviFA">C.我的最愛</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link  MSZH" href="D_PushNoti.aspx" id="PushNoti">D.推播紀錄</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link  MSZH" href="E_LookupRec.aspx" id="LookupRec">E.以前查過啥</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link  MSZH" href="F_Settings.aspx" id="Settings">F.個人資訊設定</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <div class="dropdown-divider"></div>
+                        </li>
+
+                        <li>
+                            <img src="img/blank_headphoto.png" id="HeadPhoto" class="img-circle MSZH" alt="大頭照" height="42" width="42" />
+                        </li>
+
+                        <li class="nav-item">
+                            <div style="width: 1em; height: 1em"></div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="btn btn-success MSZH" id="SignOut" href="#">登出</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="Scripts/jquery-3.2.1.min.js"></script>
+        <script src="Scripts/bootstrap.bundle.min.js"></script>
+
+        <%--Firebase 函式庫 1061213--%>
+        <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyBh7zYWVOSxIjyglIP5jxt-0eOBsSo_jDU",
+                authDomain: "lookupfas.firebaseapp.com",
+                databaseURL: "https://lookupfas.firebaseio.com",
+                projectId: "lookupfas",
+                storageBucket: "lookupfas.appspot.com",
+                messagingSenderId: "970074044960"
+            };
+            firebase.initializeApp(config);
+        </script>
+
+        <script>
+            //檢查是否登入成功，沒登入就退回Landing Page。還有抓大頭照
+            var userLogin;
+            firebase.auth().onAuthStateChanged(function (user) {
+                if (user) {
+                    userLogin = user;
+                    console.log("User is logined", user);
+                    if (user.photoURL) {
+                        document.getElementById("HeadPhoto").src = user.photoURL;
+                        console.log(user.photoURL);
+                    }
+                }
+                else {
+                    userLogin = null;
+                    console.log("User is not logined yet.");
+                    window.location.replace("index.aspx");
+                }
+            });
+        </script>
+
+        <script>
+            $(document).ready(function () {
+                $("#SignOut").click(function () {
+                    firebase.auth().signOut().then(function () {
+                        // Sign-out successful.
+                        alert("很開心為您服務，期待您的再次光臨 ^_^");
+                        window.location.replace("index.aspx");
+                    }, function (error) {
+                        // An error happened.
+                    });
+                });
+            });
+        </script>
+        <script>
+            console.log("==現在是Masterpage==")
+            var uid = localStorage.getItem("uid");
+            console.log(uid);
+            console.log("Storage", localStorage);
+        </script>
+
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+
+</body>
+</html>
