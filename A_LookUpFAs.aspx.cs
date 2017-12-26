@@ -11,4 +11,17 @@ public partial class _Default : System.Web.UI.Page
     {
 
     }
+    protected string checkEmptyLink(object ob)
+    {
+        string typ = ob.ToString();
+
+        if (typ == "")
+        {
+            return "沒有資料可供下載";
+        }
+        else
+        {
+            return "<a  href=\"" + typ + "\">檔案下載</a>";
+        }
+    }
 }
