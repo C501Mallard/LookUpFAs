@@ -15,19 +15,19 @@
                 </SelectParameters>
             </asp:SqlDataSource>--%>
 
-
+            <br />
             <div class="row MSZH">
                 <div class="col-xs-12" >
                     <asp:FormView ID="FV1" runat="server" DataSourceID="SqlDataSource2" AllowPaging="true" OnDataBound="FV1_DataBound" style="width: 100%;">
                         <ItemTemplate>
                             <table class="table1" style="width: 100%;">
                                 <tr class="panel panel-primary">
-                                    <td colspan="2" class="panel-heading">題目</td>
+                                    <td colspan="2" class="panel-heading" style="color:blue;font-size:30px">題目</td>
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td class="panel-body">
-                                        <asp:Label ID="Qz_ContentLabel" runat="server" Text='<%# Eval("Qz_Content") %>' />
+                                    <td class="panel-body" >
+                                        <asp:Label ID="Qz_ContentLabel" runat="server" Text='<%# Eval("Qz_Content") %>'  style="font-size:24px"/>
                                     </td>
                                 </tr>
                                 <tr>
@@ -35,18 +35,18 @@
                                     <td></td>
                                 </tr>
                                 <tr class="panel panel-primary">
-                                    <td colspan="2" class="panel-heading">作答</td>
+                                    <td colspan="2" class="panel-heading" style="color:blue;font-size:30px">作答</td>
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td class="panel-body">
-                                        <asp:CheckBox ID="Qz_Item1_CheckBox" runat="server" Text='<%# Eval("Qz_Item1") %>' OnCheckedChanged="Qz_Item1_CheckBox_CheckedChanged" />
+                                    <td class="panel-body" style="font-size:24px">
+                                        <asp:CheckBox ID="Qz_Item1_CheckBox" runat="server" Text='<%# Eval("Qz_Item1") %>' OnCheckedChanged="Qz_Item1_CheckBox_CheckedChanged"/>
                                         <br />
-                                        <asp:CheckBox ID="Qz_Item2_CheckBox" runat="server" Text='<%# Eval("Qz_Item2") %>' OnCheckedChanged="Qz_Item2_CheckBox_CheckedChanged" />
+                                        <asp:CheckBox ID="Qz_Item2_CheckBox" runat="server" Text='<%# Eval("Qz_Item2") %>' OnCheckedChanged="Qz_Item2_CheckBox_CheckedChanged"/>
                                         <br />
-                                        <asp:CheckBox ID="Qz_Item3_CheckBox" runat="server" Text='<%# Eval("Qz_Item3") %>' OnCheckedChanged="Qz_Item3_CheckBox_CheckedChanged" />
+                                        <asp:CheckBox ID="Qz_Item3_CheckBox" runat="server" Text='<%# Eval("Qz_Item3") %>' OnCheckedChanged="Qz_Item3_CheckBox_CheckedChanged"/>
                                         <br />
-                                        <asp:CheckBox ID="Qz_Item4_CheckBox" runat="server" Text='<%# Eval("Qz_Item4") %>' OnCheckedChanged="Qz_Item4_CheckBox_CheckedChanged" />
+                                        <asp:CheckBox ID="Qz_Item4_CheckBox" runat="server" Text='<%# Eval("Qz_Item4") %>' OnCheckedChanged="Qz_Item4_CheckBox_CheckedChanged"/>
                                         <br />
                                         <asp:Label ID="L1" runat="server" Visible="false" Text='<%# Eval("Qz_Solution") %>'>
                                                 </asp:Label>
@@ -98,20 +98,21 @@
                                     NextPageImageUrl="~/next.jpg" PreviousPageImageUrl="~/prev.jpg"
                                     LastPageImageUrl="~/last.jpg" />
                                 <PagerTemplate>--%>
+                        
                         <PagerSettings Mode="NextPreviousFirstLast" />
                         <PagerTemplate>
                             <table style="width: 100%;">
                                 <tr>
-                                    <td style="text-align: center">
+                                    <td style="text-align:left">
 
                                         <%--加上這兩項 才能用分頁的功能 CommandName="Page" CommandArgument使用 Prev或 Next--%>
-                                        <asp:Button ID="lkbPrev" CommandName="Page" CommandArgument="Prev" runat="server" CssClass="btn btn-primary" Text="Prev"></asp:Button>
+                                        <%--<asp:Button ID="lkbPrev" CommandName="Page" CommandArgument="Prev" runat="server" CssClass="btn btn-primary" Text="Prev"></asp:Button>--%>
                                         <asp:Button ID="lkbNext" CommandName="Page" CommandArgument="Next" runat="server" CssClass="btn btn-primary" Text="Next"></asp:Button>
 
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="text-align: center">
+                                    <td style="text-align:left">
                                         <asp:Label ID="lblPageInfo" runat="server"></asp:Label>
                                     </td>
                                 </tr>
